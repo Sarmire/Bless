@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_home"
+        android:icon="@drawable/home_tabbar"
+        android:title="Home" />
+    <item
+        android:id="@+id/tab_explore"
+        android:icon="@drawable/search_tabbar"
+        android:title="Explore" />
+    <item
+        android:id="@+id/tab_favourite"
+        android:icon="@drawable/favourite_tabbar"
+        android:title="Favourite" />
+    <item
+        android:id="@+id/tab_profile"
+        android:icon="@drawable/person_tabbar"
+        android:title="Profile" />
+</menu>

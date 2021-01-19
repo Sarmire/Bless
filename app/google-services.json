@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "465208687648",
+    "firebase_url": "https://blessapp-efc0a-default-rtdb.firebaseio.com",
+    "project_id": "blessapp-efc0a",
+    "storage_bucket": "blessapp-efc0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465208687648:android:cf0519fca799cfd5059045",
+        "android_client_info": {
+          "package_name": "com.blessapp.blessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465208687648-p4608fud09ol1boeu2496q1rbi0m3o67.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blessapp.blessapp",
+            "certificate_hash": "79d1127cd6687146ed5f2d262397baa8d0e3fb62"
+          }
+        },
+        {
+          "client_id": "465208687648-ppvm4qdrno6bttj1vkomc0747p78tl07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5GG3MB14fDmM1RH3aY3s9B0WJDlY5DkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465208687648-ppvm4qdrno6bttj1vkomc0747p78tl07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
