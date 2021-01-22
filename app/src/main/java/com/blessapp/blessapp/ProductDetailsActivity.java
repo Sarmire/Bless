@@ -155,7 +155,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartListRef.child("User View")
                 .child(currentUserid)
                 .child("Products")
-                //.child(productID)
+                .child(productID)
                 .updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
