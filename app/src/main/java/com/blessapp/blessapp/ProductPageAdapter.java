@@ -47,9 +47,9 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
             public void onClick(View view) {
                // mcon.startActivity(new Intent(mcon, ProductDetailsActivity.class));
 
-                Intent intent = new Intent(getApplication(), ProductDetailsActivity.class);
+                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
                 intent.putExtra("pid", model.getPid());
-                getContext().startActivity(intent);
+                view.getContext().startActivity(intent);
             }
         });
 
