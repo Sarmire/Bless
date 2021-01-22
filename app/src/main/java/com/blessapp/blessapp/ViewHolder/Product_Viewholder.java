@@ -2,12 +2,10 @@ package com.blessapp.blessapp;
 
 import android.app.Application;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -32,20 +30,25 @@ public class Product_Viewholder extends RecyclerView.ViewHolder implements View.
 
     public Product_Viewholder(@NonNull View itemView) {
         super(itemView);
+
+        itemName = itemView.findViewById(R.id.productitem_name);
+        itemPrice = itemView.findViewById(R.id.product_price);
+        itemImg = itemView.findViewById(R.id.productitem_image);
+        favBtn = itemView.findViewById(R.id.favourite_btn);
     }
 
-    public void setitem(FragmentActivity activity,  String name, String description, String price,
-                        String image, String category, String pid, String userid, String date, String time, String nameLower){
+/*    public void setitem(Application activity, String name, String description, String price,
+                        String image, String category, String pid, String userid, String date, String time, String nameLower);
 
         itemName = itemView.findViewById(R.id.productitem_name);
         itemPrice = itemView.findViewById(R.id.product_price);
 
         Picasso.get().load(image).into(itemImg);
         itemName.setText(name);
-        itemPrice.setText(price);
+        itemPrice.setText(price);*/
 
 
-    }
+   // }
 
     public void favouriteChecker(final String postkey){
         favBtn = itemView.findViewById(R.id.favourite_btn);

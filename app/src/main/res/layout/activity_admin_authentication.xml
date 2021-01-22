@@ -123,16 +123,7 @@
                 android:textColor="@color/White"/>
 
 
-            <TextView
-                android:id="@+id/admin_login_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Admin login"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/Black"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                />
+
 
 
             <ProgressBar

@@ -259,7 +259,7 @@ public class CartActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+        Intent intent = new Intent(CartActivity.this, ProductPageActivity.class);
         startActivity(intent);
     }
 }

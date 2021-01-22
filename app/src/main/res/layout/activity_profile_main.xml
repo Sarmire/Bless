@@ -1,24 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ProfileMainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_profilepage"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/candyapple">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/back_btn_profileArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_arrow_back_white_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profile"
+                        android:layout_toEndOf="@+id/back_btn_profileArrow"
+                        android:layout_toRightOf="@+id/update_account_settings_btn"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/White"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/allerta"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        tools:ignore="RtlCompat" />
+
+                    <ImageView
+                        android:id="@+id/cart_id"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@+id/profile_id"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/cart"
+                        tools:ignore="RtlCompat" />
+
+                    <ImageView
+                        android:id="@+id/profile_id"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/person_tabbar" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_below="@+id/toolbar_profilepage">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -46,7 +111,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="386dp"
+                android:layout_height="475dp"
                 android:layout_below="@+id/userProfile"
                 android:orientation="vertical">
 
@@ -140,27 +205,60 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="126dp"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/allerta"
+                        android:text="Address:"
+                        android:textColor="@color/Black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/addressname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/allerta"
+                        android:text="ahmadfakhrul127@gmail.com"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/editProfileBtn"
-                android:layout_width="250dp"
-                android:layout_height="61dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/Blue"
-                android:fontFamily="@font/audiowide"
-                android:elevation="10dp"
-                android:text="Edit Profile"
-                android:textColor="@color/GhostWhite"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
 
 
         </LinearLayout>
 
 
+
+
+
+        <Button
+            android:id="@+id/editProfileBtn"
+            android:layout_width="250dp"
+            android:layout_height="61dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/Blue"
+            android:elevation="10dp"
+            android:fontFamily="@font/audiowide"
+            android:text="Edit Profile"
+            android:textColor="@color/GhostWhite"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

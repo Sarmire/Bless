@@ -17,8 +17,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blessapp.blessapp.HomeActivity;
-import com.blessapp.blessapp.LoginActivity;
 import com.blessapp.blessapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

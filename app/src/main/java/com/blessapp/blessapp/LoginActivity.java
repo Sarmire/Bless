@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                     // if the user created intent to login activity
                     Intent intent
                             = new Intent(LoginActivity.this,
-                            HomeActivity.class);
+                            ProductPageActivity.class);
                     startActivity(intent);
                 }
                 else {

@@ -2,19 +2,21 @@ package com.blessapp.blessapp.Model;
 
 public class Users {
 
-    String username, phone, password, image, email, fullname;
+    String username, phone, password, image, email, fullname, userID, birthdate;
 
     public Users(){
 
     }
 
-    public Users(String username, String phone, String password, String image, String email, String fullname) {
+    public Users(String username, String phone, String password, String image, String email, String fullname, String userID, String birthdate) {
         this.username = username;
         this.phone = phone;
         this.password = password;
         this.image = image;
         this.email = email;
         this.fullname = fullname;
+        this.userID = userID;
+        this.birthdate = birthdate;
     }
 
     public String getUsername() {
@@ -63,5 +65,21 @@ public class Users {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 }
