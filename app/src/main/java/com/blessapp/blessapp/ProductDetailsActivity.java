@@ -98,13 +98,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
-        addToCartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProductDetailsActivity.this, ExploreActivity.class);
-                startActivity(intent);
-            }
-        });
+//        addToCartBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(ProductDetailsActivity.this, ExploreActivity.class);
+//                startActivity(intent);
+//            }
+//        });
        addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
          public void onClick(View v) {
@@ -163,7 +163,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(ProductDetailsActivity.this, "Added to Cart List", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(ProductDetailsActivity.this, ExploreActivity.class);
+                            Intent intent = new Intent(ProductDetailsActivity.this, CartActivity.class);
                             startActivity(intent);
                         }
                     }
@@ -175,7 +175,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("Products");
 
        // productsRef.child(productID).addValueEventListener(new ValueEventListener()
-        productsRef.addValueEventListener(new ValueEventListener() {
+        productsRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
