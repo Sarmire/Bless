@@ -43,7 +43,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ElegantNumberButton numberButton;
     private TextView prodDesc, prodName, prodPrice, descriptiontext;
     private String productID = "";
-    ConstraintLayout expandableview;
+    LinearLayout expandableview;
     //Button arrowbtn;
     LinearLayout cardview, suggestionView;
     private String productPrice;
