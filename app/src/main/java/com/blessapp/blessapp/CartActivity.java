@@ -166,7 +166,7 @@ public class CartActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
 
-        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Orders").child("Cart List");
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
@@ -178,7 +178,7 @@ public class CartActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull CartViewHolder holder, int i, @NonNull final Cart model) {
+                    protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
                         Picasso.get().load(model.getImageUrl()).into(holder.prodImg);
                         //To hold the data into the model
                         holder.prodName.setText(model.getName());
@@ -195,7 +195,7 @@ public class CartActivity extends AppCompatActivity {
                                         "Remove"
                                 };
 
-                                final AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
                                 builder.setTitle("Cart Options");
 
                                 builder.setItems(options, new DialogInterface.OnClickListener() {

@@ -101,4 +101,10 @@ public class FavouriteMainActivity extends AppCompatActivity {
         super.onStop();
         favouriteAdapter.stopListening();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(FavouriteMainActivity.this, ProductPageActivity.class);
+        startActivity(intent);
+    }
 }

@@ -70,6 +70,17 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
         Picasso.get().load(model.getImage()).into(holder.itemImg);
         holder.itemPrice.setText("RM " + model.getPrice());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // mcon.startActivity(new Intent(mcon, ProductDetailsActivity.class));
+
+                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
+                intent.putExtra("pid", model.getPid());
+                view.getContext().startActivity(intent);
+            }
+        });
+
 
         holder.favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,16 +134,7 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
             }
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // mcon.startActivity(new Intent(mcon, ProductDetailsActivity.class));
 
-                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
-                intent.putExtra("pid", model.getPid());
-                view.getContext().startActivity(intent);
-            }
-        });
 
     }
 
