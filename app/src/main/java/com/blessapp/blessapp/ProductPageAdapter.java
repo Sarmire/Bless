@@ -81,6 +81,7 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
             }
         });
 
+//<<<<<<< updated_20210126
 
         holder.favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +128,11 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
 
                     }
                 });
+///=======
+                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
+                intent.putExtra("pid", model.getPid());
+                view.getContext().startActivity(intent);
+//>>>>>>> master
             }
         });
     }

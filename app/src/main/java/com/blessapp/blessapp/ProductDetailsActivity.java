@@ -100,17 +100,27 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
 
 
-       addToCartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-         public void onClick(View v) {
+//<<<<<<< updated_20210126
+//=======
+//        addToCartBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(ProductDetailsActivity.this, ExploreActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//>>>>>>> master
+      // addToCartBtn.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+       //  public void onClick(View v) {
 
                /* Intent intent = new Intent(ProductDetailsActivity.this, ExploreActivity.class);
                startActivity(intent);*/
-               addToCartList();
-            }
-        });
+         //      addToCartList();
+         //   }
+       // });
 
-    }
+   // }
 
  /*   private void orderList() {
         Intent intent = new Intent(ProductDetailsActivity.this, ExploreActivity.class);

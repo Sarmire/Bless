@@ -59,6 +59,7 @@ public class CartActivity extends AppCompatActivity {
         
         recyclerView = findViewById(R.id.cartRecycler);
         recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
