@@ -105,8 +105,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
          public void onClick(View v) {
 
                /* Intent intent = new Intent(ProductDetailsActivity.this, ExploreActivity.class);
-               startActivity(intent);
-*/
+               startActivity(intent);*/
                addToCartList();
             }
         });
@@ -164,7 +163,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
 
     private void getProductDetails() {

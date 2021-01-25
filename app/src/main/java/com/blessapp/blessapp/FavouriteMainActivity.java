@@ -43,7 +43,7 @@ public class FavouriteMainActivity extends AppCompatActivity {
 
         cartBtn = findViewById(R.id.cart_id);
         profileBtn = findViewById(R.id.profile_id);
-        mAuth = FirebaseDatabase.getInstance().getReference("Users").child(currentUserid).child("Favourite");
+        mAuth = FirebaseDatabase.getInstance().getReference("Products").child(currentUserid).child("User View").child("favourites").child("favourite_list");
 
         arrowBtn = findViewById(R.id.back_btn_favouriteArrow);
 
@@ -77,7 +77,7 @@ public class FavouriteMainActivity extends AppCompatActivity {
         // favrecyclerView.setHasFixedSize(true);
         favrecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        reference = database.getReference("favoriteList").child(currentUserid);
+//        reference = database.getReference("favoriteList").child(currentUserid);
 
 
       FirebaseRecyclerOptions<Favourite> options =

@@ -64,61 +64,57 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void RegisterNewUser() {
-
         // show the visibility of progress bar to show loading
         progressBar.setVisibility(View.VISIBLE);
+        CreateAccount();
+    }
 
-        // Take the value of two edit texts in Strings
-        String email, password;
-        email = uname.getText().toString();
-        password = pass.getText().toString();
+    private void CreateAccount() {
+        //uid = FirebaseDatabase.getInstance().getReference().getKey();
+        final String email = emailID.getText().toString().trim();
+        final String username = uname.getText().toString().trim();
+        final String password = pass.getText().toString().trim();
+        final String phone = phoneNum.getText().toString().trim();
+        final String birthdate = birth.getText().toString().trim();
+        int passLength = password.length();
 
-        // Validations for input email and password
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter email",
-                    Toast.LENGTH_LONG)
-                    .show();
-            return;
-        }
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter password",
-                    Toast.LENGTH_LONG)
-                    .show();
-            return;
-        }
+        if (TextUtils.isEmpty(email)){
+            Toast.makeText(this, "Please enter your email.", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(username)){
+            Toast.makeText(this, "Please enter your name.", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(phone)){
+            Toast.makeText(this, "Please enter your phone number.", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(birthdate)){
+            Toast.makeText(this, "Please enter your birth date.", Toast.LENGTH_SHORT).show();
+        } else {
 
-        mAuth
-                .createUserWithEmailAndPassword(email,password)
+            mAuth
+                .createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),
-                                    "Registration successful!",
+                                    "Email authentication successful, proceeding to create profile...",
                                     Toast.LENGTH_LONG)
                                     .show();
-                            CreateAccount(mAuth.getCurrentUser().getUid());
 
+                            loadingBar.setTitle("Create Account");
+                            loadingBar.setMessage("Checking the credentials...");
+                            loadingBar.setCanceledOnTouchOutside(false);
+                            loadingBar.show();
+
+                            ValidatePhoneNumber(mAuth.getCurrentUser().getUid(), email, username, phone, birthdate, password);
                             // hide the progress bar
                             progressBar.setVisibility(View.GONE);
-
-                            // if the user created intent to login activity
-
-
-                   /* Intent intent
-                            = new Intent(SignupActivity.this,
-                            ProductPageActivity.class);
-                    startActivity(intent);*/
                         }
                         else {
-
                             // Registration failed
                             Toast.makeText(
                                     getApplicationContext(),
-                                    "Registration failed!!"
-                                            + " Please try again later",
+                                    "Registration failed!!" + " Please try again later. Error : " + task.getException().toString(),
                                     Toast.LENGTH_LONG)
                                     .show();
 
@@ -127,49 +123,11 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void CreateAccount(String uid) {
-
-        //String uid = FirebaseAuth.getInstance().getUid();
-        //uid = FirebaseDatabase.getInstance().getReference().getKey();
-        String name =  emailID.getText().toString().trim();
-        String password = pass.getText().toString().trim();
-        String phone = phoneNum.getText().toString().trim();
-        String birthdate = birth.getText().toString().trim();
-        String image = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
-        //String birthdate =
-        int passLength = password.length();
-
-        if (TextUtils.isEmpty(name)){
-            Toast.makeText(this, "Please enter your name.", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(phone)){
-            Toast.makeText(this, "Please enter your phone number.", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(birthdate)){
-            Toast.makeText(this, "Please enter your birth date.", Toast.LENGTH_SHORT).show();
-        }
-
-
-        else{
-            loadingBar.setTitle("Create Account");
-            loadingBar.setMessage("Checking the credentials...");
-            loadingBar.setCanceledOnTouchOutside(false);
-            loadingBar.show();
-
-            ValidatePhoneNumber(uid, name, phone, birthdate, password, image);
         }
 
     }
 
-    private void ValidatePhoneNumber(final String uid, final String name, final String phone, final String birthdate, final String password, final String image) {
+    private void ValidatePhoneNumber(final String uid, final String email, final String username, final String phone, final String birthdate, final String password) {
         final DatabaseReference rootRef;
         rootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -181,16 +139,16 @@ public class SignupActivity extends AppCompatActivity {
 
                     HashMap<String, Object> userdataMap = new HashMap<>();
 
-                    userdataMap.put("email", name);
-                    userdataMap.put("fullname", name);
-                    userdataMap.put("image", image);
+                    userdataMap.put("userID", uid);
+                    userdataMap.put("email", email);
+                    userdataMap.put("fullname", username);
                     userdataMap.put("phone", phone);
                     userdataMap.put("password", password);
                     userdataMap.put("birthdate",birthdate);
 
                     //.child("Users") - create new child/table in db with "Users" as name
                     //.child(name) - create a child under Users child/table in db with named after user's name number
-                    rootRef.child("Users").child(name).updateChildren(userdataMap)
+                    rootRef.child("Users").child(uid).updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

@@ -62,8 +62,6 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
 
     @Override
     protected void onBindViewHolder(@NonNull final ProductPageAdapter.productViewHolder holder, final int position, @NonNull final Product model) {
-
-
         final  String postkey = getRef(position).getKey();
 
         holder.itemName.setText(model.getName());
@@ -73,10 +71,12 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // mcon.startActivity(new Intent(mcon, ProductDetailsActivity.class));
+                // mcon.startActivity(new Intent(mcon, ProductDetailsActivity.class))
+
+                String getPID = model.getPid();
 
                 Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
-                intent.putExtra("pid", model.getPid());
+                intent.putExtra("pid", getPID);
                 view.getContext().startActivity(intent);
             }
         });
@@ -108,16 +108,16 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
                                 fvrtChecker = false;
                             }else {
 
-                                favouriteRef.child(postkey).child(currentUserid).setValue(true);
-                                favourite.setFav_title(name);
-                                favourite.setFav_price(price);
+                                favouriteRef = db.getReference("Favourites").child(currentUserid);
+//                                favouriteRef.setValue(true);
+//                                favourite.setFav_title(name);
+//                                favourite.setFav_price(price);
                                 favourite.setFav_id(postkey);
                                 //  String id = fvrt_listRef.push().getKey();
-                                fvrt_listRef.child(postkey).setValue(favourite);
+                                favouriteRef.setValue(favourite);
                                 fvrtChecker = false;
 
                                 Toast.makeText(view.getContext(), "Added to favourite", Toast.LENGTH_SHORT).show();
-
                             }
                         }
                     }
@@ -127,15 +127,8 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
 
                     }
                 });
-
-
-
-
             }
         });
-
-
-
     }
 
     private void addToCartList() {
@@ -162,10 +155,7 @@ public class ProductPageAdapter extends FirebaseRecyclerAdapter<Product, Product
         public productViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
-
-            favouriteRef = db.getReference("Products").child(currentUserid).child("User View").child("favourites");
-            fvrt_listRef = db.getReference("Products").child(currentUserid).child("User View").child("favourites").child("favourite_list");
+            favouriteRef = db.getReference("Favourites").child(currentUserid);
             itemName = itemView.findViewById(R.id.productitem_name);
             itemPrice = itemView.findViewById(R.id.productitem_price);
             itemImg = itemView.findViewById(R.id.productitem_image);

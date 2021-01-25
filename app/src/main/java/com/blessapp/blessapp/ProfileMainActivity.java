@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+//import com.blessapp.blessapp.Model.Users;
+import com.blessapp.blessapp.Model.Product;
 import com.blessapp.blessapp.Model.Users;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -99,9 +101,6 @@ public class ProfileMainActivity extends AppCompatActivity {
                 myorder();
             }
         });
-
-
-
 //        editBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -114,17 +113,20 @@ public class ProfileMainActivity extends AppCompatActivity {
         mRef.child(currentUserid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String uname = String.valueOf(dataSnapshot.getValue());
-                String img = String.valueOf(dataSnapshot.getValue());
-                Picasso.get(dataSnapshot.img).load(userImg)
-                username.setText(uname);
+                if (dataSnapshot.exists()){
+                    Users users = dataSnapshot.getValue(Users.class);
+
+                    String getUsername = users.getFullname();
+
+                    username.setText(getUsername);
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
 
     }
 
@@ -156,13 +158,13 @@ public class ProfileMainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    Users user = dataSnapshot.getValue(Users.class);
-
-                    Picasso.get().load(user.getImage()).into(userImg);
-                    username.setText(user.getUsername());
-                    phoneNumber.setText(user.getPhone());
-                    emailInput.setText(user.getEmail());
-                    birthdate.setText(user.getBirthdate());
+//                    Users user = dataSnapshot.getValue(Users.class);
+//
+//                    Picasso.get().load(user.getImage()).into(userImg);
+//                    username.setText(user.getUsername());
+//                    phoneNumber.setText(user.getPhone());
+//                    emailInput.setText(user.getEmail());
+//                    birthdate.setText(user.getBirthdate());
 
                 }
             }
